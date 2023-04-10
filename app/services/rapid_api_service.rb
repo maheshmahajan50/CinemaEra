@@ -7,8 +7,10 @@ class RapidApiService
   HOST = "imdb8.p.rapidapi.com"
 
   def find_by_title(title)
+    return unless title.present?
+
     response = http_request(find_by_title_endpoint + "/?q=#{title}")
-    response["results"]
+    response["results"].select{|result| result["titleType"] == 'movie'}
   end
 
   private
