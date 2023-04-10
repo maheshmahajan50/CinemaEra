@@ -9,9 +9,12 @@ class RapidApiService
 
   # For this demo app I have added only one endpoint to find moive by title if we can expand this class by creating multiple endpoints like find actor and all
   def find_by_title(title)
-    return unless title.present?
+    raise "Please give any title to find movie." unless title.present?
 
     response = http_request(find_by_title_endpoint + "/?q=#{title}")
+
+    return [] unless response["results"]
+
     response["results"].select{|result| result["titleType"] == 'movie'}
   end
 
