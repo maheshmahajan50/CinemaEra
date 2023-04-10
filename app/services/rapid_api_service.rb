@@ -25,8 +25,12 @@ class RapidApiService
     request = Net::HTTP::Get.new(url)
     request["X-RapidAPI-Key"] = API_KEY
     request["X-RapidAPI-Host"] = HOST
-    response = http.request(request)
-    JSON.parse(response.body)
+    begin
+      response = http.request(request)
+      JSON.parse(response.body)
+    rescue
+      {"results" => []}
+    end
   end
 
   def find_by_title_endpoint

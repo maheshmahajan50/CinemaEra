@@ -1,0 +1,17 @@
+<div class="container my-5">
+  <div class="row">
+    <% @favorite_movies.each do |movie| %>
+      <div class="col-md-4">
+        <div class="card mb-4 box-shadow">
+          <%= image_tag(movie.avatar, class: "card-img-top", height: 450, width: 300) %>
+          <div class="card-body">
+            <h5 class="card-title"><%= movie.title%></h5>
+            <div class="d-flex justify-content-between align-items-center">
+              <small class="text-muted">Release year: <%= movie.released_year%></small>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
