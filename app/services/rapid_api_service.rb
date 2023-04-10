@@ -3,9 +3,11 @@ require 'net/http'
 require 'openssl'
 
 class RapidApiService
+  # For this app setting the credentials here but it could move to .env file for security purposes.
   API_KEY = "e4d0ad322dmsh5e2c6237dd38e43p195729jsn1475d2cb3aa0"
   HOST = "imdb8.p.rapidapi.com"
 
+  # For this demo app I have added only one endpoint to find moive by title if we can expand this class by creating multiple endpoints like find actor and all
   def find_by_title(title)
     return unless title.present?
 

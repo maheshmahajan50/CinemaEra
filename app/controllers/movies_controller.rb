@@ -1,5 +1,8 @@
 class MoviesController < ApplicationController
+  DEFAULT_TITLE = 'AVATAR'
+
   def index
-    @movies = RapidApiService.new.find_by_title("KGF")
+    query = params[:q] || DEFAULT_TITLE
+    @movies = RapidApiService.new.find_by_title(query)
   end
 end
