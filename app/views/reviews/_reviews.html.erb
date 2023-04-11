@@ -1,0 +1,17 @@
+<div class="container-m">
+    <div class="row">
+        <% reviews.each do |review|%>
+            <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                    <div class="card-body">
+                        <b>Reviewed by: </b><h5><%= review.email %></h5>
+                        </br>
+                        </br>
+                        <b>Review: </b><p><%= review.description %></p>
+                        <b>Rating: </b><p><%= review.rating %></p>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

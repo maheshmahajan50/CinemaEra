@@ -1,22 +1,18 @@
 class ReviewsController < ApplicationController
-
-  def new
-    @review = Review.new
-  end
-
   def create
     @review = Review.new(review_params)
     if @review.save
       flash[:success] = "Review added to moive."
-      redirect_to your_favorite_path
+      redirect_to movie_path(review_params[:movie_id])
     else
-      flash[:danger] = "Something went wrong."
+      flash[:danger] = @review.errors.full_messages.join(" ")
+      redirect_to movie_path(review_params[:movie_id])
     end
   end
 
   private
 
   def review_params
-    params.require(:review).permit(:rating, :description, :movie_id)
+    params.require(:review).permit(:rating, :description, :movie_id, :email)
   end
 end

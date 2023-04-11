@@ -1,0 +1,26 @@
+
+<div class="container my-5">
+  <div class="row">
+    <% if @movie %>
+      <div class="col-md-4">
+        <div class="card mb-4 box-shadow">
+            <%= image_tag(@movie.avatar, class: "card-img-top", height: 450, width: 300) %>
+            <div class="card-body">
+              <h5 class="card-title"><%= @movie.title%></h5>
+              <div class="d-flex justify-content-between align-items-center">
+                <small class="text-muted">Release year: <%= @movie.released_year%></small>
+                <small class="text-muted">Rating: <%= @rating %></small>
+              </div>
+              <%= render 'reviews/form', movie: @movie%>
+            </div>
+          </div>
+        </div>
+    <%else%>
+      <p>Sorry, Couldnt find any result for your query.</p>
+    <%end%>
+  </div>
+  <% if @reviews.any? %>
+    <h5 class="card-title">Reviews: </h5>
+    <%= render "reviews/reviews", reviews: @reviews %>
+  <% end %>
+</div>

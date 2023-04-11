@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   post '/mark_as_favorite', to: 'movies#create'
   get '/your_favorite', to: 'movies#favorite'
 
-  resources :reviews, only: [:create]
+  resources :reviews, only: [:create, :index]
 end

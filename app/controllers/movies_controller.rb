@@ -8,6 +8,8 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
+    @rating = @movie.reviews.average(:rating).to_i
+    @reviews = @movie.reviews
   end
 
   def favorite

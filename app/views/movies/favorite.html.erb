@@ -6,10 +6,12 @@
           <div class="card mb-4 box-shadow">
             <%= image_tag(movie.avatar, class: "card-img-top", height: 450, width: 300) %>
             <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
               <h5 class="card-title"><%= movie.title%></h5>
+              <%= link_to "show",  movie_path(movie.id), class: "btn btn-sm btn-outline-secondary"  %>
+              </div>
               <div class="d-flex justify-content-between align-items-center">
                 <small class="text-muted">Release year: <%= movie.released_year%></small>
-                <%= render 'reviews/form', movie: movie%>
               </div>
             </div>
           </div>
