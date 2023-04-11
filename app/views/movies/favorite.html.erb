@@ -9,6 +9,7 @@
               <h5 class="card-title"><%= movie.title%></h5>
               <div class="d-flex justify-content-between align-items-center">
                 <small class="text-muted">Release year: <%= movie.released_year%></small>
+                <%= render 'reviews/form', movie: movie%>
               </div>
             </div>
           </div>

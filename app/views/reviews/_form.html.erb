@@ -1,0 +1,20 @@
+<%= form_with(model: @review, method: :http_method) do |f| %>
+  <div class="field form-group">
+    <div class="rating">
+      <%= f.collection_radio_buttons(:rating, [[5],[4],[3],[2],[1]], :first, :last) do |star| %>
+        <%= star.radio_button %>
+        <%= star.label(class: "text-white") %>
+      <% end %>
+    </div>
+  </div>
+  <div class="field form-group">
+    <%= f.label :body, "Leave a review" %>
+    <%= f.text_area :description, class: "form-control",
+                        placeholder: "Tell people about your experience" %>
+  </div>
+  <%= f.hidden_field :movie_id, value: movie.id %>
+  <div class="actions">
+    <%= f.submit "Submit your review", class: "btn btn-primary" %>
+  </div>
+<% end %>
+

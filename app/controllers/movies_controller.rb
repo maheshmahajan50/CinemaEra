@@ -6,6 +6,10 @@ class MoviesController < ApplicationController
     @movies = RapidApiService.new.find_by_title(query)
   end
 
+  def show
+    @movie = Movie.find(params[:id])
+  end
+
   def favorite
     if params[:q]
       @favorite_movies = Movie.where("title LIKE ?", "%#{params[:q]}%")

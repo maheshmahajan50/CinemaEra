@@ -1,3 +1,123 @@
 // Place all the styles related to the Movies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+// h1, h2 {
+// 			color: #888;
+// 			margin:0;
+// 			font-weight:normal;
+// 		}
+// 		h1{ padding-top: 1.5em; padding-bottom: 2em; }
+// 		h2 {
+// 			clear:both;
+// 			color: #aaa;
+// 			padding: 2em 0 0.3em
+// 		}
+// 		em {
+// 			display: block;
+// 			margin: .5em auto 2em;
+// 			color: #bbb;
+// 		}
+
+// 		p, p a {
+// 			color: #aaa;
+// 			text-decoration: none;
+// 		}
+// 		p a:hover,
+// 		p a:focus {
+// 			text-decoration: underline;
+// 		}
+// 		p + p { color: #bbb; margin-top: 2em;}
+// 		.detail {position: absolute; text-align: right; right: 5px; bottom: 5px; width: 50%;}
+
+// 		a[href*="intent"] {
+// 			display:inline-block;
+// 			margin-top: 0.4em;
+// 		}
+
+// 		/*
+// 		 * Rating styles
+// 		 */
+// 		.rating {
+// 			width: 226px;
+// 			margin: 0 auto 1em;
+// 			font-size: 25px;
+// 			overflow:hidden;
+// 		}
+// .rating input {
+//   float: right;
+//   opacity: 0;
+//   position: absolute;
+// }
+// 		.rating a,
+//     .rating label {
+// 			float:right;
+// 			color: #aaa;
+// 			text-decoration: none;
+// 			-webkit-transition: color .4s;
+// 			-moz-transition: color .4s;
+// 			-o-transition: color .4s;
+// 			transition: color .4s;
+// 		}
+// .rating label:hover ~ label,
+// .rating input:focus ~ label,
+// .rating label:hover,
+// 		.rating a:hover,
+// 		.rating a:hover ~ a,
+// 		.rating a:focus,
+// 		.rating a:focus ~ a		{
+// 			color: orange;
+// 			cursor: pointer;
+// 		}
+// 		.rating2 {
+// 			direction: rtl;
+// 		}
+// 		.rating2 a {
+// 			float:none
+// 		}
+
+
+/*
+* star rating
+*/
+
+.rating {
+  display: flex;
+  width: 100%;
+  justify-content: left;
+  overflow: hidden;
+  flex-direction: row-reverse;
+  // height: 150px;
+  position: relative;
+}
+
+.rating-0 {
+  filter: grayscale(100%);
+}
+
+.rating > input {
+  display: none;
+}
+
+.rating > label {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  margin-top: auto;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='126.729' height='126.73'%3e%3cpath fill='%23dedede' d='M121.215 44.212l-34.899-3.3c-2.2-.2-4.101-1.6-5-3.7l-12.5-30.3c-2-5-9.101-5-11.101 0l-12.4 30.3c-.8 2.1-2.8 3.5-5 3.7l-34.9 3.3c-5.2.5-7.3 7-3.4 10.5l26.3 23.1c1.7 1.5 2.4 3.7 1.9 5.9l-7.9 32.399c-1.2 5.101 4.3 9.3 8.9 6.601l29.1-17.101c1.9-1.1 4.2-1.1 6.1 0l29.101 17.101c4.6 2.699 10.1-1.4 8.899-6.601l-7.8-32.399c-.5-2.2.2-4.4 1.9-5.9l26.3-23.1c3.8-3.5 1.6-10-3.6-10.5z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 76%;
+  transition: .3s;
+}
+
+.rating > input:checked ~ label,
+.rating > input:checked ~ label ~ label {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='126.729' height='126.73'%3e%3cpath fill='%23fbbc04' d='M121.215 44.212l-34.899-3.3c-2.2-.2-4.101-1.6-5-3.7l-12.5-30.3c-2-5-9.101-5-11.101 0l-12.4 30.3c-.8 2.1-2.8 3.5-5 3.7l-34.9 3.3c-5.2.5-7.3 7-3.4 10.5l26.3 23.1c1.7 1.5 2.4 3.7 1.9 5.9l-7.9 32.399c-1.2 5.101 4.3 9.3 8.9 6.601l29.1-17.101c1.9-1.1 4.2-1.1 6.1 0l29.101 17.101c4.6 2.699 10.1-1.4 8.899-6.601l-7.8-32.399c-.5-2.2.2-4.4 1.9-5.9l26.3-23.1c3.8-3.5 1.6-10-3.6-10.5z'/%3e%3c/svg%3e");
+}
+
+
+.rating > input:not(:checked) ~ label:hover,
+.rating > input:not(:checked) ~ label:hover ~ label {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='126.729' height='126.73'%3e%3cpath fill='%23e0a803' d='M121.215 44.212l-34.899-3.3c-2.2-.2-4.101-1.6-5-3.7l-12.5-30.3c-2-5-9.101-5-11.101 0l-12.4 30.3c-.8 2.1-2.8 3.5-5 3.7l-34.9 3.3c-5.2.5-7.3 7-3.4 10.5l26.3 23.1c1.7 1.5 2.4 3.7 1.9 5.9l-7.9 32.399c-1.2 5.101 4.3 9.3 8.9 6.601l29.1-17.101c1.9-1.1 4.2-1.1 6.1 0l29.101 17.101c4.6 2.699 10.1-1.4 8.899-6.601l-7.8-32.399c-.5-2.2.2-4.4 1.9-5.9l26.3-23.1c3.8-3.5 1.6-10-3.6-10.5z'/%3e%3c/svg%3e");
+}

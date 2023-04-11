@@ -2,6 +2,7 @@ require 'open-uri'
 
 class Movie < ApplicationRecord
   has_one_attached :avatar, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
   def avatar_url=(url)
     file = open(url)
