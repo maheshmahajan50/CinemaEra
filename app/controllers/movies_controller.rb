@@ -1,23 +1,22 @@
 class MoviesController < ApplicationController
-  DEFAULT_TITLE = 'AVATAR'
+  DEFAULT_TITLE = 'AVATAR'.freeze
 
   def index
     query = params[:q] || DEFAULT_TITLE
-    @movies = RapidApiService.new.find_by_title(query)
+    cache_key = "movies_#{query}"
+    @movies = Rails.cache.fetch(cache_key, expires_in: 10.minute) do
+      RapidApiService.new.find_by_title(query)
+    end
   end
 
   def show
-    @movie = Movie.find(params[:id])
+    @movie = Movie.includes(:reviews).find(params[:id])
     @rating = @movie.reviews.average(:rating).to_i
     @reviews = @movie.reviews
   end
 
   def favorite
-    if params[:q]
-      @favorite_movies = Movie.where("title LIKE ?", "%#{params[:q]}%")
-    else
-      @favorite_movies = Movie.all
-    end
+    @favorite_movies = params[:q] ? Movie.search_by_title(params[:q]) : Movie.all
   end
 
   def create
