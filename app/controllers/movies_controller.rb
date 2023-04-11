@@ -22,7 +22,7 @@ class MoviesController < ApplicationController
 
   def create
     @movie = Movie.new(movie_params)
-    @movie.avatar_url = params[:image_url]
+    @movie.avatar_url = params[:image_url] if params[:image_url]
     if @movie.save
       flash[:success] = "Movie added to your favorite list."
       redirect_to your_favorite_path

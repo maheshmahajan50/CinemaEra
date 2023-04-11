@@ -1,6 +1,7 @@
 module MoviesHelper
   def image_url(movie)
     if movie.is_a?(ActiveRecord::Base)
+
     else
       movie.dig('image', 'url') || no_image_url
     end
